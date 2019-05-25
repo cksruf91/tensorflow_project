@@ -9,8 +9,7 @@ import tensorflow as tf
 
 from config import *
 from utils.tfrecord_util import parse_tfrecord
-from utils.util import normalize_img, progress
-
+from utils.util import progress
 
 def pad_and_crop(image, shape, pad_size=2):
 
@@ -46,8 +45,8 @@ def random_image_shift(image):
     return image
 
 
-def image_preprocess(image,label):
-
+def image_preprocess(image,label):  
+    
         ## random한 각도로 image를 회전
     image = random_rotate(image)
     

@@ -28,7 +28,7 @@ LABEL = {'deer': [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 IMAGE_SHAPE = (32,32,3)
 COPY_IMAGE = 1
 
-SEND_MESSAGE = True
+SEND_MESSAGE = False
 SAVE_CHECKPOINT = True
 EARLY_STOPPING = False
 

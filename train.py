@@ -6,7 +6,7 @@ import time
 
 from config import *
 from model import *
-from train_generator import batch_iterator
+from iterator import batch_iterator
 from utils.util import train_progressbar, slack_message, learning_rate_schedule
 
 # def args():
@@ -69,8 +69,10 @@ with tf.variable_scope('optimizers'):
     
 #accuracy
 with tf.variable_scope('accuracy'):
-    
-    output = tf.nn.softmax(output, name='output')
+#     output = tf.nn.softmax(output, name='output')
+#     output = tf.keras.activations.linear(output)
+    zero = tf.constant(0.0,dtype = 'float32')
+    output = tf.math.add(output,zero, name='output')
     prediction = tf.equal(tf.argmax(output, 1), tf.argmax(labels, 1), name='prediction')
     accuracy = tf.reduce_mean(tf.cast(prediction, tf.float32), name='accuracy')
     
@@ -192,8 +194,8 @@ with tf.Session() as sess:
               'best :', best_accuracy.eval(),
               '\tcurrent :', mean_val_acc)
         
-        ## send result to slack
         
+        ## send result to slack
         if SEND_MESSAGE:
             message = "epoch : {} | time : {} \n loss : {:5.5f} \n acc : {:5.5f} \n val_loss : {:5.5f} \n val_acc : {:5.5f}".format(epoch_, epoch_time, mean_train_loss, mean_train_acc,mean_val_loss, mean_val_acc)
             slack_message('#resnet_project', message)
@@ -216,4 +218,7 @@ with tf.Session() as sess:
         if EARLY_STOPPING:
             if patience > 7:
                 break
+        
+        if epoch_ % 5 ==0 :
+            time.sleep(60*2)
             

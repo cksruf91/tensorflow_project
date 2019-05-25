@@ -42,7 +42,7 @@ class ResNetV2():
         x = tf.keras.layers.Activation('relu')(x)
         
         for stage in range(3):
-            for blocks in range(3):
+            for blocks in range(12):
                 stride_ = 1
                 if stage == 0:
                     ## 0: 16 -> 64
