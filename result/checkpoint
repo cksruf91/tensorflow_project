@@ -1,6 +1,2 @@
-model_checkpoint_path: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_39.ckpt"
-all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_35.ckpt"
-all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_36.ckpt"
-all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_37.ckpt"
-all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_38.ckpt"
-all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_39.ckpt"
+model_checkpoint_path: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_40.ckpt"
+all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_40.ckpt"
