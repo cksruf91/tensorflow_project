@@ -74,8 +74,6 @@ def create_tfrecord(image_dir, output_file):
     for image, label in image_and_label(image_files):
         ## image 사이즈를 균일하게 맞춤
         image = resize(image,(32,32,3))
-        ## image 정규화
-        image = normalize_img(image)
         
         height = image.shape[0]
         width = image.shape[1]

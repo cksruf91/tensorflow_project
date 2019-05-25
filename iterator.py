@@ -11,6 +11,14 @@ from config import *
 from utils.tfrecord_util import parse_tfrecord
 from utils.util import normalize_img, progress
 
+def normalize_img(img):
+    shape = img.shape
+    img = np.float64(img.reshape(-1))
+    img -= img.mean()
+    img /= img.std()
+    img = img.reshape(shape)
+#     img = img/ 255
+    return img
 
 def pad_and_crop(image, shape, pad_size=2):
 
@@ -47,7 +55,9 @@ def random_image_shift(image):
 
 
 def image_preprocess(image,label):
-
+        ## image 정규화
+    image = normalize_img(image)    
+    
         ## random한 각도로 image를 회전
     image = random_rotate(image)
     

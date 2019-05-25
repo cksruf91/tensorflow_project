@@ -30,15 +30,6 @@ def slack_message(chennel, message):
     slack = Slacker(MY_SLACK_TOKEN)
     slack.chat.post_message(chennel, message)
 
-def normalize_img(img):
-    shape = img.shape
-    img = np.float64(img.reshape(-1))
-    img -= img.mean()
-    img /= img.std()
-    img = img.reshape(shape)
-#     img = img/ 255
-    return img
-
 def learning_rate_schedule(epoch_, lr):
     if epoch_ > 150:
         lr *= 0.5e-3
