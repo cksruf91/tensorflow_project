@@ -69,8 +69,10 @@ with tf.variable_scope('optimizers'):
     
 #accuracy
 with tf.variable_scope('accuracy'):
-    
-    output = tf.nn.softmax(output, name='output')
+#     output = tf.nn.softmax(output, name='output')
+#     output = tf.keras.activations.linear(output)
+    zero = tf.constant(0.0,dtype = 'float32')
+    output = tf.math.add(output,zero, name='output')
     prediction = tf.equal(tf.argmax(output, 1), tf.argmax(labels, 1), name='prediction')
     accuracy = tf.reduce_mean(tf.cast(prediction, tf.float32), name='accuracy')
     
