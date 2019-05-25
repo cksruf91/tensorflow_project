@@ -1,0 +1,5 @@
+model_checkpoint_path: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_4.ckpt"
+all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_1.ckpt"
+all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_2.ckpt"
+all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_3.ckpt"
+all_model_checkpoint_paths: "D:\\Projects\\gitrepo\\tensorflow_project\\result\\checkpoint_4.ckpt"
