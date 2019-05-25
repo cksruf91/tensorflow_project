@@ -6,7 +6,7 @@ import time
 
 from config import *
 from model import *
-from train_generator import batch_iterator
+from iterator import batch_iterator
 from utils.util import train_progressbar, slack_message, learning_rate_schedule
 
 # def args():
