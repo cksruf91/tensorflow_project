@@ -10,7 +10,18 @@ from skimage.transform import rescale, resize, downscale_local_mean
 import tensorflow as tf
 
 from config import *
-from utils.util import normalize_img, progress
+from utils.util import progress
+
+def normalize_img(img):
+    shape = img.shape
+    img = np.float64(img.reshape(-1))
+    img -= img.mean()
+    img /= img.std()
+    img = img.reshape(shape)
+#     img = tf.image.per_image_standardization(img)
+#     img = img/ 255
+    return img
+
 
 def int64_feature(value):
     return tf.train.Feature(int64_list=tf.train.Int64List(value=[value]))
@@ -74,6 +85,8 @@ def create_tfrecord(image_dir, output_file):
     for image, label in image_and_label(image_files):
         ## image 사이즈를 균일하게 맞춤
         image = resize(image,(32,32,3))
+        ## image 정규화
+        image = normalize_img(image)
         
         height = image.shape[0]
         width = image.shape[1]
@@ -104,6 +117,7 @@ if __name__ == "__main__":
     
 #     if os.path.isfile(TEST_FILE):
 #         os.popen(f"del {TEST_FILE}")
+    print('generate tfrecord file...')
     
     create_tfrecord(TRAIN_IMAGE,TRAIN_FILE)
     create_tfrecord(TEST_IMAGE,TEST_FILE)

@@ -192,8 +192,8 @@ with tf.Session() as sess:
               'best :', best_accuracy.eval(),
               '\tcurrent :', mean_val_acc)
         
-        ## send result to slack
         
+        ## send result to slack
         if SEND_MESSAGE:
             message = "epoch : {} | time : {} \n loss : {:5.5f} \n acc : {:5.5f} \n val_loss : {:5.5f} \n val_acc : {:5.5f}".format(epoch_, epoch_time, mean_train_loss, mean_train_acc,mean_val_loss, mean_val_acc)
             slack_message('#resnet_project', message)
@@ -216,4 +216,7 @@ with tf.Session() as sess:
         if EARLY_STOPPING:
             if patience > 7:
                 break
+        
+        if epoch_ % 5 ==0 :
+            time.sleep(60*2)
             
